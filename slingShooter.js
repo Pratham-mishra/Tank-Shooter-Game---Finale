@@ -18,7 +18,7 @@ class SlingShooter{
     fly(){
         this.sling.bodyA = null;
     }
-
+    
     display(){
         if(this.sling.bodyA){
              stroke("red");

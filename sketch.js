@@ -38,30 +38,60 @@ function setup(){
     ground = new Ground(600,395,1200,10);
     slingShooterObject = new SlingShooter(ball1.body,{x: 100, y:250});
   }
-
+  
 function draw() {
     background(backgroundImage);
-    if(keyIsDown(UP_ARROW)){
+    if (slingShooterObject.sling.bodyA){
+     ball1.body.position ={
+       x : 1100,
+       y : 10
+     }
+    }
+    if (shooter.body.angle == 0){
+      slingShooterObject.sling.pointB = {
+        x:500,
+        y:270
+      }
+    }
+    else if (shooter.body.angle == -30){
+      slingShooterObject.sling.pointB = {
+        x : 400,
+        y : 300,
+      }
+    }
+    else if (shooter.body.angle == -60){
+      slingShooterObject.sling.pointB ={
+        x :200,
+        y :50
+      }
+    }
+    else if(shooter.body.angle ===-90){
+      slingShooterObject.sling.pointB ={
+        x:100,
+        y:50
+      }
+    }
+    
+   /*  
+   if(keyIsDown(UP_ARROW)){
       Matter.Body.setAngle(shooter.body, -120);
 
       }
     if(keyIsDown(DOWN_ARROW)){
     Matter.Body.setAngle(shooter.body, 120);
     }
-  //if (keyIsDown(ENTER)){
-      //Matter.Body.setPosition(ball1.body, {x: 200 , y:200});
-    //slingShooterObject.attach(ball1.body);
-    // gameState = 'launched';
-      
-  //}
+  if (keyIsDown(ENTER)){
+    Matter.Body.setPosition(ball1.body,{x: 100, y:250});
+    slingShooterObject.attach(ball1.body);
+     } */
   
-  if(keyIsDown(32)){
+ /*  if(keyIsDown(32)){
     ball1.body.angle = shooter.body.angle;
     ball1.body.velocity.y=-1
     ball1.body.velocity.x=5;
     slingShooterObject.fly();
     
-  }
+  */ //}
     Engine.update(engine);
     ground.display();
     shooter.display();
@@ -75,4 +105,19 @@ function draw() {
 
 
     slingShooterObject.display();
+    
+  }
+  function keyPressed(){
+
+    if(keyCode==UP_ARROW && shooter.body.angle>-70){
+      shooter.body.angle = shooter.body.angle-60;
+    }else
+    if(keyCode==DOWN_ARROW && shooter.body.angle<0){
+      shooter.body.angle = shooter.body.angle+60;
+    }
+  }
+  function keyReleased(){
+    if (keyCode ===32){
+      slingShooterObject.fly();
+    }
   }

@@ -9,6 +9,7 @@ class Ball{
         this.radius= r;
         World.add(world,this.body);
         
+        
     }
     display(){
         var pos =this.body.position;
@@ -19,7 +20,7 @@ class Ball{
         rotate(angle);
         fill("grey");
         circle(pos.x, pos.y, this.radius);
-        
+         
         pop();
         
     }
