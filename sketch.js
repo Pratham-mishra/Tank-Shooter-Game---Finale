@@ -131,7 +131,7 @@ function draw() {
     block6.display();
     block7.display();
     
-    
+    slingShooterObject.attach(ball1.body);
    
 
 
