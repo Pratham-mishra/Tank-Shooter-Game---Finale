@@ -13,7 +13,8 @@ class Blocks{
         World.add(world, this.body);
       }
       display(){
-        noStroke();
+        strokeWeight(3);
+        stroke(0);
         fill("red");
         var pos =this.body.position;
         var angle = this.body.angle;
